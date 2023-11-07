@@ -119,7 +119,23 @@ public class ContosoPagesTests : PageTest
     [SetUp]
     public async Task Setup()
     {
+        await Context.Tracing.StartAsync(new TracingStartOptions
+        {
+            Screenshots = true,
+            Snapshots = true,
+            Sources = true
+        });
+
         await Page.GotoAsync("/");
+    }
+
+    [TearDown]
+    public async Task Teardown()
+    {
+        await Context.Tracing.StopAsync(new TracingStopOptions
+        {
+            Path = $"trace_pagestests_{TestContext.CurrentContext.Test.Name}.zip"
+        });
     }
 
     public override BrowserNewContextOptions ContextOptions()
