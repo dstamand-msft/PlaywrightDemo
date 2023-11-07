@@ -7,7 +7,7 @@ namespace UITests
     // Beginning with NUnit 2.5, the TestFixture attribute is optional for non-parameterized, non-generic fixtures.
     // So long as the class contains at least one method marked with the Test, TestCase or TestCaseSource attribute, it will be treated as a test fixture.
     [TestFixture]
-    public class Tests : PageTest
+    public class HomepageTests : PageTest
     {
         [Test]
         public async Task homepage_should_contain_the_welcome_text()
